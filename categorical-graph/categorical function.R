@@ -1,7 +1,11 @@
 library(tidyverse)
 library(drlib)
 
+
 cat_graph <- function(dataframe,max_categories = 10){
+  
+  require(drlib)
+  
   
     if(dataframe %>% map_lgl(~!is.factor(.))%>% all() == TRUE){
       stop("dataframe contains no factor columns")}
@@ -25,6 +29,8 @@ cat_graph <- function(dataframe,max_categories = 10){
 mtcars%>%
   mutate_at(vars(vs,am,carb,gear),~as.factor(.))%>%
   cat_graph()
+
+
 
 
 
